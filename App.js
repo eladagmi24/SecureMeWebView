@@ -1,3 +1,3 @@
-import App from "./screen/webview/index";
+import App from "./screen/webview/securemewebview";
 
 export default App;

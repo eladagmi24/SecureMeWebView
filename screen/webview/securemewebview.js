@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Linking, StyleSheet, PermissionsAndroid, Platform } from "react-native";
+import { Linking, StyleSheet, PermissionsAndroid, Platform , Alert} from "react-native";
 import { WebView } from 'react-native-webview';
 
 
@@ -9,7 +9,11 @@ const [hasCameraPermission, setHasCameraPermission] = useState(null);
 const [hasLocationPermission, setHasLocationPermission] = useState(null);
 const [hasReadStoragePermission, setHasReadStoragePermission] = useState(null);
 const [hasWriteStoragePermission, setHasWriteStoragePermission] = useState(null);
-
+const [hasInternetPermission, setHasInternetPermission] = useState(null);
+const [hasRecordAudioPermission, setHasRecordAudioPermission] = useState(null);
+const [hasModifyAudioPermission, setHasModifyAudioPermission] = useState(null);
+const [hasVideoPermission, setHasVideoPermission] = useState(null);
+const [hasAudioCapturePermission, setHasAudioCapturePermission] = useState(null);
 
 const useMount = func => useEffect(() => func(), []);
 
@@ -39,23 +43,23 @@ const useInitialURL = () => {
         })();
         (async () => {
           const { status } = await PermissionsAndroid.request('android.permission.INTERNET');
-          setHasWriteStoragePermission(status === 'granted');
+          setHasInternetPermission(status === 'granted');
         })();
         (async () => {
           const { status } = await PermissionsAndroid.request('android.permission.RECORD_AUDIO');
-          setHasWriteStoragePermission(status === 'granted');
+          setHasRecordAudioPermission(status === 'granted');
         })();
         (async () => {
           const { status } = await PermissionsAndroid.request('android.permission.MODIFY_AUDIO_SETTINGS');
-          setHasWriteStoragePermission(status === 'granted');
+          setHasModifyAudioPermission(status === 'granted');
         })();
         (async () => {
           const { status } = await PermissionsAndroid.request('android.permission.VIDEO_CAPTURE');
-          setHasWriteStoragePermission(status === 'granted');
+          setHasVideoPermission(status === 'granted');
         })();
         (async () => {
           const { status } = await PermissionsAndroid.request('android.permission.AUDIO_CAPTURE');
-          setHasWriteStoragePermission(status === 'granted');
+          setHasAudioCapturePermission(status === 'granted');
         })();
 
 
@@ -88,7 +92,13 @@ const useInitialURL = () => {
 
   const { url: initialUrl, processing } = useInitialURL();
   
-
+  // if(hasCameraPermission !== 'granted' || hasLocationPermission !== 'granted' || hasReadStoragePermission !== 'granted' || 
+  // hasWriteStoragePermission !== 'granted' || hasInternetPermission !== 'granted' || hasRecordAudioPermission !== 'granted' || 
+  // hasModifyAudioPermission !== 'granted' || hasVideoPermission !== 'granted' || hasAudioCapturePermission !== 'granted') {
+  
+  //   Alert.alert("One of the permissions was denied, can not complete the session")
+  //   return;
+  // }
   
 
   return (
