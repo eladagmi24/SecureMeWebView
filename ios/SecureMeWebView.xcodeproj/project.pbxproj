@@ -491,7 +491,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8NB3DS5NV2;
+				DEVELOPMENT_TEAM = 553GNC732L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SecureMeWebView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -503,7 +503,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SecureMeWebView;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SecureMeWebView.ios;
 				PRODUCT_NAME = SecureMeWebView;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -522,7 +522,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8NB3DS5NV2;
+				DEVELOPMENT_TEAM = 553GNC732L;
 				INFOPLIST_FILE = SecureMeWebView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -533,7 +533,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SecureMeWebView;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SecureMeWebView.ios;
 				PRODUCT_NAME = SecureMeWebView;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
