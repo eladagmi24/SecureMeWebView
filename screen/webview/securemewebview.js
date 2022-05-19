@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Linking, StyleSheet, PermissionsAndroid, Platform} from "react-native";
+import { Linking, StyleSheet, Platform} from "react-native";
 import { WebView } from 'react-native-webview';
+import Permissions from './Permissions'
+
 
 export default function App() {
 const useMount = func => useEffect(() => func(), []);
@@ -11,37 +13,8 @@ const useInitialURL = () => {
   const [processing, setProcessing] = useState(true);
   // Asking for android permissions
   if(Platform.OS === 'android'){
-    useEffect(() => {
-        (async () => {
-          const { status } = await PermissionsAndroid.PERMISSIONS.CAMERA;
-        })();
-        (async () => {
-          const { status } = await PermissionsAndroid.request('android.permission.ACCESS_FINE_LOCATION');
-        })();
-        (async () => {
-          const { status } = await PermissionsAndroid.request('android.permission.READ_EXTERNAL_STORAGE');
-        })();
-        (async () => {
-          const { status } = await PermissionsAndroid.request('android.permission.WRITE_EXTERNAL_STORAGE');
-        })();
-        (async () => {
-          const { status } = await PermissionsAndroid.request('android.permission.INTERNET');
-        })();
-        (async () => {
-          const { status } = await PermissionsAndroid.request('android.permission.RECORD_AUDIO');
-        })();
-        (async () => {
-          const { status } = await PermissionsAndroid.request('android.permission.MODIFY_AUDIO_SETTINGS');
-        })();
-        (async () => {
-          const { status } = await PermissionsAndroid.request('android.permission.VIDEO_CAPTURE');
-        })();
-        (async () => {
-          const { status } = await PermissionsAndroid.request('android.permission.AUDIO_CAPTURE');
-        })();
-      }, []);
+    Permissions.apply
   }
- 
   useMount(() => {
     const getUrlAsync = async () => {
       // Get the deep link used to open the app
@@ -52,14 +25,12 @@ const useInitialURL = () => {
         // setUrl('https://stg.10tix.me/65rV93Ka8MzG9Xpr4GKs');
         setProcessing(false);
     };
-
     getUrlAsync();
   });
-  // Show url in terminal
-  console.log(url)
   return { url, processing };
 };
-  const { url: initialUrl, processing } = useInitialURL();
+const { url: initialUrl, processing } = useInitialURL();
+
 
   return (
     <WebView source={{ uri: initialUrl }}
@@ -69,10 +40,11 @@ const useInitialURL = () => {
     javaScriptEnabled={true}
     useWebKit={true}
     allowsInlineMediaPlayback={true}
+    javaScriptEnabledAndroid={true}
     />
   );
-
 }
+
 
 const styles = StyleSheet.create({});
 
