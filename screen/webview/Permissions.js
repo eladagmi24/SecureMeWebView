@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {StyleSheet, PermissionsAndroid } from "react-native";
 
 const Permissions = () => {
+    const [per, setpermission] = useState(null);
 
     useEffect(() => {
         (async () => {
-        await PermissionsAndroid.PERMISSIONS.CAMERA;
+        const {status} = await PermissionsAndroid.PERMISSIONS.CAMERA;
+        setpermission(status);
         })();
         (async () => {
             await PermissionsAndroid.requestMultiple('android.permission.ACCESS_FINE_LOCATION', 'android.permission.READ_EXTERNAL_STORAGE', 
@@ -13,6 +15,7 @@ const Permissions = () => {
             'android.permission.VIDEO_CAPTURE', 'android.permission.AUDIO_CAPTURE');
         })();
     }, []);
+    console.log(per);
 };
 
 const styles = StyleSheet.create({});

@@ -12,18 +12,17 @@ const useInitialURL = () => {
   const [url, setUrl] = useState(null);
   const [processing, setProcessing] = useState(true);
   // Asking for android permissions
-  if(Platform.OS === 'android'){
-    Permissions.apply
-  }
+  // if(Platform.OS === 'android'){
+  //   Permissions.apply
+  // }
   useMount(() => {
     const getUrlAsync = async () => {
       // Get the deep link used to open the app
       const initialUrl = await Linking.getInitialURL();
+      setUrl(initialUrl);
 
-      // The setTimeout is just for testing purpose
-        setUrl(initialUrl);
-        // setUrl('https://stg.10tix.me/65rV93Ka8MzG9Xpr4GKs');
-        setProcessing(false);
+      // setUrl('https://stg.10tix.me/65rV93Ka8MzG9Xpr4GKs');
+      setProcessing(false);
     };
     getUrlAsync();
   });
