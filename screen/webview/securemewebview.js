@@ -12,9 +12,9 @@ const useInitialURL = () => {
   const [url, setUrl] = useState(null);
   const [processing, setProcessing] = useState(true);
   // Asking for android permissions
-  // if(Platform.OS === 'android'){
-  //   Permissions.apply
-  // }
+  if(Platform.OS === 'android'){
+    Permissions.apply
+  }
   useMount(() => {
     const getUrlAsync = async () => {
       // Get the deep link used to open the app
