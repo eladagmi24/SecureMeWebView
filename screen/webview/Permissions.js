@@ -15,7 +15,6 @@ const Permissions = () => {
             'android.permission.VIDEO_CAPTURE', 'android.permission.AUDIO_CAPTURE');
         })();
     }, []);
-    console.log(per);
 };
 
 const styles = StyleSheet.create({});
